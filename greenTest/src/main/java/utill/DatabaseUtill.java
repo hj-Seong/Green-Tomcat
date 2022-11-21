@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseUtill {
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		try { // try쪽에서 오류가 났을때
 			// MySQL의 데이터베이스와 연결
 			// jdbc:mysql://localhost:3306/(데이터베이스)
