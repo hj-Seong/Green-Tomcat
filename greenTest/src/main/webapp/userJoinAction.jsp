@@ -18,6 +18,41 @@
 		//getParameter("userID") form에서보낸 name값으로 호출
 		userID = (String) request.getParameter("userID");
 	}
+	if(request.getParameter("userPassword") !=null) {
+		//getParameter("userID") form에서보낸 name값으로 호출
+		userPassword = (String) request.getParameter("userPassword");
+	}
+	
+	if(userID ==null || userPassword == null) {
+		// 자바스트립트(alert)로 값이 없음을 안내
+		PrintWriter script = response.getWriter();
+		script.println("<script>"); 
+		script.println("alert('입력이 안된 사항이있습니다');");
+		script.println("history.back();"); 
+		script.println("</script>"); 
+		script.close();
+		return;
+	}
+	
+	// 값이 다 들어온것을 확인 후에 
+	// DAO를 통해서 데이터베이스에 쿼리문 작성
+	UserDAO userDAO = new UserDAO();
+	// result에 쿼리문을 실행하고 그 결과가 숫자값으로 들어옴 1/-1
+	int result = userDAO.join(userID, userPassword);
+	if (result == 1) {
+		// 자바스트립트(alert)로 값이 들어갔음을 안내
+		PrintWriter script = response.getWriter();
+		script.println("<script>"); 
+		script.println("alert('데이터베이스에 값이 들어갔습니다');");
+		script.println("location.href='./about.jsp'"); 
+		script.println("</script>"); 
+		script.close();
+		return;
+	}
+	
+	
+	
+	
 	
 %>
 
