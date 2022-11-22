@@ -16,7 +16,7 @@ public class UserDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2,userPassword);
-			return pstmt.executeUpdate(); // 성공시 1반환
+			return pstmt.executeUpdate(); // 성공시 1반환/실패시 0반환
 			
 		}catch(Exception e) {
 			e.printStackTrace();
