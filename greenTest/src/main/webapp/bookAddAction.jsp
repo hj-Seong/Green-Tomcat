@@ -31,5 +31,19 @@
 		script.close();
 		return;
 	}
+	
+	// 데이터 베이스에 값이 들어왔을때
+	BookDAO bookdao = new BookDAO();
+	int result = bookdao.addBook(title, count);
+	if(result == 1) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('데이터베이스에 book값이 들어갔습니다');");
+		script.println("location.href='index.html'");
+		script.println("</script>");
+		script.close();
+		return;
+	}
+	
 %>
 
