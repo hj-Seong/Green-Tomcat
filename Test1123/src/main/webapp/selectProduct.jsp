@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="product.ProductDTO" %>
 <%@ page import="product.ProductDAO" %>
+<%@ page import="javax.servlet.*" %>
 
 <%
 	// request method는 항상 GET
@@ -34,6 +35,8 @@
 		response.setContentType("application/json");
 		out.print(jobj.toJSONString());
 	}
+	
+	response.addHeader("Access-Control-Allow-Origin", "*");
 %>
 
 
